@@ -1,0 +1,32 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - go build -trimpath -o bin/miburi .
+
+  run:
+    deps: [build]
+    cmds:
+      - sudo ./bin/miburi
+
+  list:
+    deps: [build]
+    cmds:
+      - sudo ./bin/miburi -list
+
+  vendor:
+    cmds:
+      - go mod tidy
+      - go mod vendor
+
+  rpm:
+    deps: [vendor]
+    cmds:
+      - mkdir -p dist
+      - rpmbuild --build-in-place -bb packaging/miburi.spec --define "_topdir {{.TASKFILE_DIR}}/dist/rpmbuild"
+      - find dist/rpmbuild/RPMS -name '*.rpm' -exec cp {} dist/ \;
+
+  clean:
+    cmds:
+      - rm -rf bin dist vendor

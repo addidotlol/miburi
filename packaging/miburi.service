@@ -1,0 +1,12 @@
+[Unit]
+Description=mouse gestures for gnome
+After=systemd-udevd.service
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/miburi
+ExecStart=/usr/bin/miburi $MIBURI_OPTS
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
