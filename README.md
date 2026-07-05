@@ -20,7 +20,7 @@ if no movement is detected, it will send a normal forward input.
 
     task build
 
-needs go and go-task. run with sudo, it needs /dev/input and /dev/uinput.
+needs [go](https://go.dev) and [go-task](https://taskfile.dev). run with sudo, it needs /dev/input and /dev/uinput.
 
 ## packages
 
