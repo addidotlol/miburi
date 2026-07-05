@@ -6,7 +6,7 @@ Version:        0.1.0
 Release:        1%{?dist}
 Summary:        mouse gestures for gnome using evdev
 
-License:        MIT
+License:        GPL-3.0-only
 URL:            https://github.com/addidotlol/miburi
 
 BuildRequires:  golang
@@ -34,6 +34,7 @@ install -Dm644 packaging/miburi.sysconfig %{buildroot}%{_sysconfdir}/sysconfig/m
 %systemd_postun_with_restart miburi.service
 
 %files
+%license LICENSE
 %{_bindir}/miburi
 %{_unitdir}/miburi.service
 %config(noreplace) %{_sysconfdir}/sysconfig/miburi

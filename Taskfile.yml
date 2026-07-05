@@ -33,8 +33,9 @@ tasks:
     deps: [build]
     cmds:
       - rm -rf dist/debroot
-      - mkdir -p dist/debroot/DEBIAN dist/debroot/usr/bin dist/debroot/usr/lib/systemd/system dist/debroot/etc/sysconfig
+      - mkdir -p dist/debroot/DEBIAN dist/debroot/usr/bin dist/debroot/usr/lib/systemd/system dist/debroot/etc/sysconfig dist/debroot/usr/share/doc/miburi
       - cp bin/miburi dist/debroot/usr/bin/miburi
+      - cp LICENSE dist/debroot/usr/share/doc/miburi/copyright
       - cp packaging/miburi.service dist/debroot/usr/lib/systemd/system/miburi.service
       - cp packaging/miburi.sysconfig dist/debroot/etc/sysconfig/miburi
       - cp packaging/deb-control dist/debroot/DEBIAN/control

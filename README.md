@@ -47,3 +47,7 @@ match shortcuts that are actually bound in gnome, check with:
     gsettings list-recursively org.gnome.desktop.wm.keybindings | grep workspace
 
 the service reads flags from MIBURI_OPTS in /etc/sysconfig/miburi.
+
+## license
+
+gpl-3.0
