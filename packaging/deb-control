@@ -1,0 +1,10 @@
+Package: miburi
+Version: 0.1.0
+Architecture: amd64
+Maintainer: addison <addidotlol@gmail.com>
+Section: utils
+Priority: optional
+Homepage: https://github.com/addidotlol/miburi
+Description: mouse gestures for gnome using evdev
+ hold the forward mouse button and move to trigger gnome
+ overview and workspace switching.

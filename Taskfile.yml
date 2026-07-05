@@ -2,6 +2,8 @@ version: '3'
 
 tasks:
   build:
+    env:
+      CGO_ENABLED: 0
     cmds:
       - go build -trimpath -o bin/miburi .
 
@@ -26,6 +28,18 @@ tasks:
       - mkdir -p dist
       - rpmbuild --build-in-place -bb packaging/miburi.spec --define "_topdir {{.TASKFILE_DIR}}/dist/rpmbuild"
       - find dist/rpmbuild/RPMS -name '*.rpm' -exec cp {} dist/ \;
+
+  deb:
+    deps: [build]
+    cmds:
+      - rm -rf dist/debroot
+      - mkdir -p dist/debroot/DEBIAN dist/debroot/usr/bin dist/debroot/usr/lib/systemd/system dist/debroot/etc/sysconfig
+      - cp bin/miburi dist/debroot/usr/bin/miburi
+      - cp packaging/miburi.service dist/debroot/usr/lib/systemd/system/miburi.service
+      - cp packaging/miburi.sysconfig dist/debroot/etc/sysconfig/miburi
+      - cp packaging/deb-control dist/debroot/DEBIAN/control
+      - echo /etc/sysconfig/miburi > dist/debroot/DEBIAN/conffiles
+      - dpkg-deb --build --root-owner-group dist/debroot dist/
 
   clean:
     cmds:

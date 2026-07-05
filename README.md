@@ -22,11 +22,12 @@ if no movement is detected, it will send a normal forward input.
 
 needs go and go-task. run with sudo, it needs /dev/input and /dev/uinput.
 
-## rpm
+## packages
 
     task rpm
+    task deb
 
-builds an rpm into dist/ using rpmbuild. install it, then:
+builds an rpm (rpmbuild) or deb (dpkg-deb) into dist/. install one, then:
 
     sudo systemctl enable --now miburi
 
